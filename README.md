@@ -19,7 +19,7 @@ The parameter should be the path to the image in quotes.
 # How it works.
 Let's say we have a 128x64 image of a maze that meets the requirements.
 
-- Now the program makes a 128 by 64 grid of __short ints__ with 0 as the black pixels and 1 as the white pixels. If we encounter a white pixel, we give it an ID and assign its X and Y coordinates to that ID.
+- Now the program makes a 128 by 64 grid of __short ints__ with 0 as the black pixels and 1 as the white pixels. If we encounter a white pixel, we give it an ID and assign its X and Y coordinates to that ID. The green and blue pixels are writen as 1s in the grid as well.
 - Next we make a graph. The number of vertices in the graph is equal to the number of white pixels and each ID of a white pixel is also the ID of that pixel's corresponding vertex in the graph.
 - For every two adjacent white pixels add an edge between them.
 - At this point we have loaded the maze logically into memory.
