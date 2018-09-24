@@ -223,7 +223,7 @@ int main(int argc, char** argv){
     }
 
     std::ofstream file2("result.ppm");
-    file2<<"P3\n"<<xres<<" "<<yres<<"\n225\n";
+    file2<<"P3\n"<<xres<<" "<<yres<<"\n255\n";
 
     for(int i=0;i<yres;++i){
         for(int j=0;j<xres;++j){
