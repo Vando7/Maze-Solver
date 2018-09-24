@@ -1,5 +1,6 @@
 # Maze-Solver
 Find the shortest path between two points in a maze.
+![alt text](https://i.imgur.com/tLLtRSq.png) ![alt text](https://i.imgur.com/jtrl3oO.png)
 
 # Usage
 First, you must have an image meeting the requirements below.
