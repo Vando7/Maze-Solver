@@ -1,8 +1,12 @@
 # Maze-Solver
 Find the shortest path between two points in a maze.
-![alt text](https://i.imgur.com/tLLtRSq.png) ![alt text](https://i.imgur.com/jtrl3oO.png)
+# Example
+## Unsolved maze.
+![alt text](https://i.imgur.com/tLLtRSq.png) 
+## Solved maze.
+![alt text](https://i.imgur.com/jtrl3oO.png)
 
-# Usage
+## Usage
 First, you must have an image meeting the requirements below.
 
 Then you run the program in the command line with a single parameter.
@@ -11,13 +15,13 @@ The parameter should be the path to the image in quotes.
  Maze_solver.exe "E:\Stuff and stuff\maze.ppm"
 ```
 
-# Maze image requirements.
+## Maze image requirements.
 - Must be encoded in ASCII.
 - Must not have **any** comments inside it.
 - Has to have at least one green pixel and blue pixel which represent the start and end respectively.
 - The start and end have to be in pure colors, as in **(  0,255,  0)** for green and **(  0,  0,255)** for blue.
 
-# How it works.
+## How it works.
 Let's say we have a 128x64 image of a maze that meets the requirements.
 
 - Now the program makes a 128 by 64 grid of __short ints__ with 0 as the black pixels and 1 as the white pixels. If we encounter a white pixel, we give it an ID and assign its X and Y coordinates to that ID. The green and blue pixels are writen as 1s in the grid as well.
