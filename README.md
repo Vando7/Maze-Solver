@@ -1,5 +1,6 @@
 # Maze-Solver
-Find the shortest path between two points in a maze.
+Find and draw a path from point A to point B. 
+The **Start** and **End** are indicated with a **Green** and a **Blue** pixel respectively.
 # Example
 ## Unsolved maze.
 ![alt text](https://i.imgur.com/tLLtRSq.png) 
