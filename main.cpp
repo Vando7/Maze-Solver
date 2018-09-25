@@ -251,7 +251,7 @@ int main(int argc, char** argv){
                 if(grid[i][j][0]==1){
                     file2<<255<<"\n";
                     file2<<255<<"\n";
-                    file2<<225<<"\n";
+                    file2<<255<<"\n";
                 }
                 if(grid[i][j][0]==0){
                     file2<<000<<"\n";
