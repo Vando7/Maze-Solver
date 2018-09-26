@@ -1,4 +1,4 @@
-# Maze-Solver
+# Maze-Solver (C::B, GCC)
 Find and draw a path from point A to point B. 
 The **Start** and **End** are indicated with a **Green** and a **Blue** pixel respectively.
 # Example
