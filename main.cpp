@@ -88,15 +88,18 @@ void gridToGraph(
 
 int main(int argc, char** argv){
 
-    if(argc!=2){
+    if(argc!=3){
         printf("Error: Invalid input.\n");
-        printf("Input format: [Maze.exe \"..\\file.ppm\"] with the quotes.\n");
+        printf("Input format: maze_solver.exe [path] [alg]\n");
+        printf("With path being the path to a .ppm file and alg being\n");
+        printf("\t 1 - for A*\n\t 2 - for Dijkstra\n");
         return 6;
     }
 
     std::ifstream file;
 
     file.open(argv[1]);
+
     if(!file.is_open()){
         std::cout<<argv[1]<<"\n";
         printf("Error opening file.\n");
@@ -207,7 +210,14 @@ int main(int argc, char** argv){
     matrix_graph solution(vertex_counter);
     gridToGraph(grid,solution);
 
-    std::vector<int> a = solution.dijkstra(startIdx,endIdx);
+    std::vector<int> a;
+
+    if(argv[2][0]=='1'){
+        a=solution.aStar(startIdx,endIdx,vertex_index);
+    }
+    else if(argv[2][0]=='2'){
+        a=solution.dijkstra(startIdx,endIdx);
+    }
 
     printf("Successfully found path with a length of %d. Writing to result.ppm\n",a.size());
 
