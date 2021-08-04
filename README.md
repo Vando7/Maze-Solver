@@ -1,11 +1,16 @@
-# Maze-Solver (C::B, GCC)
-Find and draw a path from point A to point B. 
+# Maze-Solver
+Find and draw a path between two points in a maze using either A* or Dijkstra.
+
 The **Start** and **End** are indicated with a **Green** and a **Blue** pixel respectively.
+
+Written in C++ using Code::Blocks and gcc compiler. To build open the C::B project file (.cbp) in Code::Blocks and build.
+
 # Example
-## Unsolved maze.
+### Unsolved maze.
 ![alt text](https://i.imgur.com/tLLtRSq.png) 
-## Solved maze.
+### Solved maze.
 ![alt text](https://i.imgur.com/jtrl3oO.png)
+
 
 ## Usage
 First, you must have an image meeting the requirements below.
@@ -13,22 +18,11 @@ First, you must have an image meeting the requirements below.
 Then you run the program in the command line with a single parameter.
 The parameter should be the path to the image in quotes.
 ```
- Maze_solver.exe "E:\Stuff and stuff\maze.ppm"
+ Maze_solver.exe "E:\Stuff and stuff\maze.ppm" 1
 ```
+Where 1 is for A* and 2 is for Dijkstra.
 
 ## Maze image requirements.
-- Must be encoded in ASCII.
+- Must be a .ppm file encoded in ASCII.
 - Must not have **any** comments inside it.
-- Has to have at least one green pixel and blue pixel which represent the start and end respectively.
-- The start and end have to be in pure colors, as in **(  0,255,  0)** for green and **(  0,  0,255)** for blue.
-
-## How it works.
-Let's say we have a 128x64 image of a maze that meets the requirements.
-
-- Now the program makes a 128 by 64 grid of __short ints__ with 0 as the black pixels and 1 as the white pixels. If we encounter a white pixel, we give it an ID and assign its X and Y coordinates to that ID. The green and blue pixels are writen as 1s in the grid as well.
-- Next we make a graph. The number of vertices in the graph is equal to the number of white pixels and each ID of a white pixel is also the ID of that pixel's corresponding vertex in the graph.
-- For every two adjacent white pixels add an edge between them.
-- At this point we have loaded the maze logically into memory.
-- Run dijkstra's algorithm to find the shortest path from Green to Blue.
-- Write the path into the grid.
-- Output the grid back to a .ppm file
+- Has to have at least one green pixel **(  0,255,  0)** and one blue pixel **(  0,  0,255)** which represent the start and end respectively.
