@@ -20,8 +20,10 @@ public:
     void printAdjList() const;
     void printConnComp() const;
     int connectedComponents();
+    int h(const int, const int, const int, const int);
 
     std::vector<int> dijkstra(const int&,const int&);
+    std::vector<int> aStar(const int&,const int&, const std::vector<std::vector<short int>>&);
     bool isDirectional();
     bool isAcyclic();
     bool isDAG();
