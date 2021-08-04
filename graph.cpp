@@ -231,6 +231,15 @@ bool matrix_graph::isDAG(){
     return false;
 }
 
+
+int matrix_graph::h(int start_x, int start_y, int goal_x, int goal_y){
+    int dx = abs(start_x - goal_x);
+    int dy = abs(start_y - goal_y);
+    int minimum = dx>dy?dy:dx;
+    return dx+dy - minimum;
+}
+
+
 /// Return path from st to gl in the graph.
 std::vector<int> matrix_graph::dijkstra(const int& st,const int& gl){
     int start = st-1;
@@ -297,20 +306,69 @@ std::vector<int> matrix_graph::dijkstra(const int& st,const int& gl){
 }
 
 
+/// Return path from st to gl in the graph.
+std::vector<int> matrix_graph::aStar(const int& st,const int& gl, const std::vector<std::vector <short int>>& coords){
+    int start = st-1;
+    int goal = gl-1;
+    /*if( start<0||start>=size  || goal<0 || goal>=size  ){
+        printf("ERROR: Dijkstra IVALID GOALS\n");
+        printf("Size: %d\n",size);
+        printf("Start: %d\n",st);
+        printf("End: %d\n",gl);
+    }*/
 
+    std::vector<int> dist(size,100000000);
+    std::vector<int> prev(size,-1);
+    std::vector<int> Q(size);
+    for(int i=0;i<size;++i)Q[i]=i;
+    dist[start]=0;
 
+    while(!Q.empty()){
+        int min=100000001;
+        int min_node=0;
+        int min_idx=0;
 
+        for(int i = 0;i<Q.size();++i){
+            if(dist[Q[i]]<min){
+                min = dist[Q[i]];
+                min_node = Q[i];
+                min_idx = i;
+            }
+        }
+        if(Q[min_idx]==goal)break;
+        Q.erase(Q.begin()+min_idx);
 
+        for(int i=0;i<size;++i){
+            if(matrix[min_node][i]!=0){
+                bool found = false;
+                for(int j=0;j<Q.size();++j)
+                    if(Q[j]==i)found = true;
 
+                if(found){
 
+                    int alt = dist[min_node]+matrix[min_node][i] +
+                              h(coords[i][0],coords[i][1],coords[goal][0],coords[goal][1]);
+                    if(alt<dist[i]){
+                        dist[i]= alt;
+                        prev[i]= min_node;
+                    }
+                }
+            }
+        }
+    }
+    std::vector<int> result;
+    result.push_back(gl);
+    //printf("Path from %d to %d :\n   [%d]",st,gl,gl);
+    int i=goal;
+    while(prev[i]!=start){
+        if(i<0){printf("no path"); break;}
+        int a= prev[i]+1;
+        result.push_back(a);
+        //printf("<-[%d]",a);
+        i=prev[i];
 
-
-
-
-
-
-
-
-
-
-
+    }
+    //printf("<-[%d]\n",st);
+    result.push_back(st);
+    return result;
+}
